@@ -33,7 +33,7 @@ class HairsController < ApplicationController
   end
 
   def new
-    @hair = current_user.hairs.new
+    @hair = Hair.new
     authorize @hair
   end
 
