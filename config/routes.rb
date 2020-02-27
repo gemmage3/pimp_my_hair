@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'purchases/index'
+  get 'purchases/create'
+  get 'purchases/new'
+  get 'purchases/show'
   devise_for :users
   root to: 'pages#home'
 
