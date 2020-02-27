@@ -6,12 +6,22 @@ class HairsController < ApplicationController
     @hairs = policy_scope(Hair)
   end
 
-  def show
+  def new
+    @hair = Hair.new
+    authorize @hair
   end
 
-  def destroy
-    @hair.destroy
-    redirect_to hairs_path
+  def create
+    @hair = Hair.new(hairs_params)
+    authorize @hair
+    if @hair.save
+      redirect_to hairs_path
+    else
+      render :new
+    end
+  end
+
+  def show
   end
 
   def edit
@@ -26,29 +36,19 @@ class HairsController < ApplicationController
     end
   end
 
-  def new
-    @hair = Hair.new
-    authorize @hair
+  def destroy
+    @hair.destroy
+    redirect_to hairs_path
   end
 
-  def create
-    @hair = current_user.hairs.new(hairs_params)
-    authorize @hair
-    if @hair.save
-      redirect_to @hair
-    else
-      render :new
-    end
-  end
-
-  def my
+  def my_hair
     @hairs = current_user.hairs
   end
 
    private
 
   def hairs_params
-    params.require(:hair).permit(:ethnicity, :weight_grams, :length_cm, :price, :hair_type, :colour, :user_id, photos: [])
+    params.require(:hair).permit(:ethnicity, :weight_grams, :length_cm, :price, :hair_type, :colour, photos: [])
   end
 
   def set_hair
