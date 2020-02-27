@@ -1,2 +1,16 @@
-<h1>Hairs#index</h1>
-<p>Find me in app/views/hairs/index.html.erb</p>
+<h1>Find the hair that fits your needs</h1>
+
+<ul>
+  <% @unsold_hairs.each do |hair|%>
+    <li class="card">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+      <div class="card-infos">
+        <div>
+          <h2> <%= hair.length_cm %> cm of <%= hair.hair_type %> <%= hair.colour %> hair </h2>
+          <h3> <%= hair.weight_grams %> grams for <%= hair.price %> GBP </h3>
+        </div>
+        <button type="button" class="btn btn-warning"> Purchase Now! </button>
+      </div>
+    </li>
+  <% end %>
+</ul>
