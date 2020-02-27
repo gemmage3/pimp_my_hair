@@ -1,5 +1,6 @@
 class Hair < ApplicationRecord
   belongs_to :user
+  has_many_attached :photos
   has_one :purchase
   validates :weight, presence: true
   validates :length, presence: true
