@@ -7,7 +7,7 @@ class HairsController < ApplicationController
     @hairs = policy_scope(Hair)
     @unsold_hairs = []
     @hairs.each do |hair|
-      @unsold_hairs << hair if !@purchases.hairs.exists?(params[:id])
+      @unsold_hairs << hair if !hair.sold
     end
     @unsold_hairs
   end
