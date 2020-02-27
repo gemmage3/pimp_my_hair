@@ -1,7 +1,16 @@
-<h1>This is the our shit</h1>
+<h1>Find the hair that fits your needs</h1>
 
 <ul>
   <% @unsold_hairs.each do |hair|%>
-    <li> <%= hair.weight_grams %> </li>
+    <li class="card">
+      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+      <div class="card-infos">
+        <div>
+          <h2> <%= hair.length_cm %> cm of <%= hair.hair_type %> <%= hair.colour %> hair </h2>
+          <h3> <%= hair.weight_grams %> grams for <%= hair.price %> GBP </h3>
+        </div>
+        <button type="button" class="btn btn-warning"> Purchase Now! </button>
+      </div>
+    </li>
   <% end %>
 </ul>
