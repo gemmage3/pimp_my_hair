@@ -1,9 +1,9 @@
 class Hair < ApplicationRecord
   belongs_to :user
   has_one :purchase
-  validates :weight, presence: true
-  validates :length, presence: true
-  validates :price_per_gram, presence: true
+  validates :weight_grams, presence: true
+  validates :length_cm, presence: true
+  validates :price, presence: true
   validates :hair_type, presence: true
   validates :colour, presence: true
 end

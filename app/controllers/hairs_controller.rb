@@ -3,7 +3,13 @@ class HairsController < ApplicationController
   before_action :set_hair, only: [:show, :edit, :update, :destroy]
 
   def index
+    @purchases = policy_scope(Purchase)
     @hairs = policy_scope(Hair)
+    @unsold_hairs = []
+    @hairs.each do |hair|
+      @unsold_hairs << hair if !@purchases.hairs.exists?(params[:id])
+    end
+    @unsold_hairs
   end
 
   def show

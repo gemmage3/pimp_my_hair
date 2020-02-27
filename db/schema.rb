@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_27_134804) do
+ActiveRecord::Schema.define(version: 2020_02_27_202233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_134804) do
     t.string "colour"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "sold", default: false
     t.index ["user_id"], name: "index_hairs_on_user_id"
   end
 
