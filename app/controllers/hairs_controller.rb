@@ -54,7 +54,7 @@ class HairsController < ApplicationController
    private
 
   def hairs_params
-    params.require(:hair).permit(:ethnicity, :weight_grams, :length_cm, :price, :hair_type, :colour, :user_id)
+    params.require(:hair).permit(:ethnicity, :weight_grams, :length_cm, :price, :hair_type, :colour, :user_id, photos: [])
   end
 
   def set_hair

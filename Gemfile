@@ -28,7 +28,12 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
+# authentication
 gem 'devise'
 
 #authorization
 gem 'pundit'
+
+# cloudinary - images resource
+gem 'cloudinary', '~> 1.12.0'
+
