@@ -1,20 +1,17 @@
 <div class="container m-6">
 <h1 class="text-center">My Hair Collection</h1>
-<ul>
-  <% @hairs.each do |hair|%>
-    <li class="card w-60">
-      <%= cl_image_tag hair.photos.first.key %>
-      <div class="card-infos">
-        <div>
-          <h2> <%= hair.length_cm %> cm of <%= hair.hair_type %> <%= hair.colour %> hair </h2>
-          <h3> <%= hair.weight_grams %> grams for <%= hair.price %> GBP </h3>
+  <div class="cards">
+    <% @hairs.each do |hair|%>
+      <div class="card">
+        <%= cl_image_tag hair.photos.first.key %>
+        <div class="card-infos">
+          <div>
+            <p> <%= hair.length_cm %> cm of <%= hair.hair_type %> <%= hair.colour %> hair </p>
+            <p> <%= hair.weight_grams %> grams for <%= hair.price %> GBP </p>
+          </div>
+          <%= link_to 'Edit', edit_hair_path(hair), class: 'btn btn-warning' %>
         </div>
-        <%= link_to 'Edit', edit_hair_path(hair), class: 'btn btn-warning' %>
       </div>
-    </li>
-  <% end %>
-</ul>
-
+    <% end %>
+  </div>
 </div>
-
-
