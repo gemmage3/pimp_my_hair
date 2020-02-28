@@ -5,30 +5,23 @@ class PurchasesController < ApplicationController
   def create
     @purchase = Purchase.new(purchases_params)
     @purchase.user = current_user
-    set_hair
-    authorize @hair
-    if @hair.save
-      redirect_to hairs_path
+    @hair = Hair.find(params[:hair_id])
+    @purchase.hair = @hair
+    authorize @purchase
+    if @purchase.save
+      redirect_to purchase_path(@purchase.id)
     else
-      render :new
+      edirect_to purchase_path(@purchase.id)
     end
   end
 
-  def new
-    @purchase = Purchase.new
-    authorize @purchase
-  end
-
   def show
+    @purchase = Purchase.find(params[:id])
+    authorize @purchase
   end
 
   private
   def purchases_params
     params.require(:purchase).permit(:comment)
-  end
-
-  def set_hair
-    @purchase.hair = Hair.find(params[:id])
-    authorize @hair
   end
 end
