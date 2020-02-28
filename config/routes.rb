@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     collection do
       get 'my_hair'
     end
-  # end
+   end
 
   resources :users do
     resources :purchases, only: [ :index ]
