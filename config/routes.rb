@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'hairs#home'
+  root to: 'pages#home'
 
   resources :hairs do
     collection do
