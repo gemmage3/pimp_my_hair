@@ -1,5 +1,5 @@
 class HairsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:index, :edit, :update]
   before_action :set_hair, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -32,6 +32,7 @@ class HairsController < ApplicationController
   end
 
   def edit
+    @hair = Hair.find(params[:id])
   end
 
   def update
@@ -50,6 +51,7 @@ class HairsController < ApplicationController
 
   def my_hair
     @hairs = current_user.hairs
+    authorize @hairs
   end
 
    private
