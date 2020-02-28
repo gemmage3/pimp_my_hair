@@ -1,2 +1,16 @@
-<h1>Hairs#edit</h1>
-<p>Find me in app/views/hairs/edit.html.erb</p>
+<h1>Edit hair</h1>
+<p></p>
+
+<%= link_to 'Hair', hairs_path(@hair) %>
+
+<%= simple_form_for @hair do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :length_cm %>
+  <%= f.input :weight_grams %>
+  <%= f.input :hair_type, collection: Hair::TYPES, prompt: :translate %>
+  <%= f.input :price %>
+  <%= f.input :colour %>
+  <%= f.input :ethnicity, collection: Hair::ETHNICITY, prompt: :translate %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.submit %>
+<% end %>
