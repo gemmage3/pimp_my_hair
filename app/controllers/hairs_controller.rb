@@ -19,6 +19,7 @@ class HairsController < ApplicationController
 
   def create
     @hair = Hair.new(hairs_params)
+    @hair.user = current_user
     authorize @hair
     if @hair.save
       redirect_to hairs_path
