@@ -4,12 +4,6 @@
   <%= f.input :weight_grams %>
   <%= f.input :hair_type, collection: Hair::TYPES, prompt: :translate %>
   <%= f.input :price %>
-  <%= f.input :colour %>
-  <%= f.input :ethnicity, collection: Hair::ETHNICITY, prompt: :translate %>
-  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.submit %>
-<% end %>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,3 +31,8 @@
     });
   </script>
 </body>
+  <%= f.input :ethnicity, collection: Hair::ETHNICITY, prompt: :translate %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.submit %>
+<% end %>
+
