@@ -1,4 +1,6 @@
-<h1>Find the hair that fits your needs</h1>
+<%= render 'shared/banner' %>
+
+<div class="container m-6">
 
 <ul>
   <% @unsold_hairs.each do |hair|%>
@@ -15,5 +17,5 @@
   <% end %>
 </ul>
 
-<%= link_to 'Sell your hair', new_hair_path, class: 'btn btn-warning' %>
+</div>
 
