@@ -50,6 +50,7 @@ class HairsController < ApplicationController
 
   def my_hair
     @hairs = current_user.hairs
+    authorize @hairs
   end
 
    private
