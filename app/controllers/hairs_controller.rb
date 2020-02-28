@@ -29,6 +29,10 @@ class HairsController < ApplicationController
   end
 
   def show
+    @hair = Hair.find(params[:id])
+    authorize @hair
+    @purchase = Purchase.new
+    authorize @purchase
   end
 
   def edit
