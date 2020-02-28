@@ -9,7 +9,7 @@
           <h2> <%= hair.length_cm %> cm of <%= hair.hair_type %> <%= hair.colour %> hair </h2>
           <h3> <%= hair.weight_grams %> grams for <%= hair.price %> GBP </h3>
         </div>
-        <button type="button" class="btn btn-warning"> Edit </button>
+        <%= link_to 'Edit', edit_hair_path(hair), class: 'btn btn-warning' %>
       </div>
     </li>
   <% end %>

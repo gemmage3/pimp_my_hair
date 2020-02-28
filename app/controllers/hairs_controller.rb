@@ -38,7 +38,7 @@ class HairsController < ApplicationController
   def update
     @hair.update(hairs_params)
     if @hair.save
-      redirect_to @hair
+      redirect_to my_hair_hairs_path
     else
       render :edit
     end
