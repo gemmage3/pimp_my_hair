@@ -9,4 +9,5 @@ class Hair < ApplicationRecord
   validates :colour, presence: true
   ETHNICITY = [ "Caucasian", "Asian", "African"]
   TYPES = [ "straight", "wavy", "curly", "coily" ]
+  COLOURS = [ "blond", "red", "brown", "white", "gray"]
 end
