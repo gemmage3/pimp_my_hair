@@ -3,7 +3,7 @@
 <ul>
   <% @unsold_hairs.each do |hair|%>
     <li class="card">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+      <%= cl_image_tag hair.photo.key, crop: :fill %>
       <div class="card-infos">
         <div>
           <h2> <%= hair.length_cm %> cm of <%= hair.hair_type %> <%= hair.colour %> hair </h2>
