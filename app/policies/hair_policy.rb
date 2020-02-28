@@ -20,4 +20,9 @@ class HairPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
+  def my_hair?
+    # record.all? { |hair| hair.user == user }
+    true
+  end
 end

@@ -18,7 +18,7 @@
           <%= cl_image_tag current_user.avatar.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Sell a new hair", new_hair_path, class: "dropdown-item" %>
-            <%= link_to "My Hairs", hairs_path, class: "dropdown-item" %>
+            <%= link_to "My Hairs", my_hair_hairs_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
