@@ -1,44 +1,12 @@
-<%= simple_form_for :article do |f| %>
+<%= simple_form_for @hair do |f| %>
   <%= f.error_notification %>
-
- <div class="form-group">
-    <label for="exampleFormControlTextarea1">Description</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  </div>
-
-  <%= f.input :cm %>
-  <%= f.input :grams %>
+  <%= f.input :length_cm %>
+  <%= f.input :weight_grams %>
+  <%= f.input :hair_type, collection: Hair::TYPES, prompt: :translate %>
   <%= f.input :price %>
-
-<fieldset class="form-group">
-    <div class="row">
-      <legend class="col-form-label col-sm-2 pt-0">Ethnicity</legend>
-      <div class="col-sm-10">
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-          <label class="form-check-label" for="gridRadios1">
-            Caucasian
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-          <label class="form-check-label" for="gridRadios2">
-            Asian
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3">
-          <label class="form-check-label" for="gridRadios3">
-            African
-          </label>
-        </div>
-      </div>
-    </div>
-  <%= f.input :quality, as: :range %>
-  <%= f.input :firts_time_selling, as: :radio_buttons %>
+  <%= f.input :colour %>
+  <%= f.input :ethnicity, collection: Hair::ETHNICITY, prompt: :translate %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-  <%= f.button :submit, class: "btn-primary" %>
-  <%= f.button :button, "Cancel", type: "reset", class: "btn-outline-secondary" %>
-
+  <%= f.submit %>
 <% end %>
 

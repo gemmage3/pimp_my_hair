@@ -7,4 +7,6 @@ class Hair < ApplicationRecord
   validates :price, presence: true
   validates :hair_type, presence: true
   validates :colour, presence: true
+  ETHNICITY = [ "Caucasian", "Asian", "African"]
+  TYPES = [ "straight", "wavy", "curly", "coily" ]
 end
