@@ -9,7 +9,10 @@
             <p> <%= hair.length_cm %> cm of <%= hair.hair_type %> <%= hair.colour %> hair </p>
             <p> <%= hair.weight_grams %> grams for <%= hair.price %> GBP </p>
           </div>
-          <%= link_to 'Edit', edit_hair_path(hair), class: 'btn btn-warning' %>
+          <div class="d-flex align-items-end flex-column">
+          <%= link_to 'Edit', edit_hair_path(hair), class: 'btn btn-warning mb-2' %>
+          <%= link_to 'Delete', "#", class: 'btn btn-warning' %>
+          </div>
         </div>
       </div>
     <% end %>
