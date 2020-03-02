@@ -1,9 +1,15 @@
 <div class="container m-6">
 <h1 class="text-center">My Hair Collection</h1>
-  <div class="cards">
+  <div class="card-columns">
     <% @hairs.each do |hair|%>
       <div class="card">
-        <%= cl_image_tag hair.photos.first.key %>
+        <% if hair.sold %>
+
+          <%= cl_image_tag hair.photos.first.key, :style => "filter: grayscale(100%);" %>
+          <div class="sold-tag"> SOLD </div>
+        <% else %>
+          <%= cl_image_tag hair.photos.first.key %>
+        <% end %>
         <div class="card-infos">
           <div>
             <p> <%= hair.length_cm %> cm of <%= hair.hair_type %> <%= hair.colour %> hair </p>
