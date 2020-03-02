@@ -1,7 +1,7 @@
 <div id="hairs">
   <div class="cards">
-    <% @unsold_hairs.each do |hair|%>
-      <div class="card">
+    <% hairs.each do |hair|%>
+      <div class="card" id="hair-id-<%= hair.id %>">
           <%= cl_image_tag hair.photos.first.key %>
         <div class="card-infos">
           <div>

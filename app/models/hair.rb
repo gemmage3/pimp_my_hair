@@ -18,9 +18,6 @@ class Hair < ApplicationRecord
     using: {
       tsearch: {any_word: true}
     }
-  $ethnicity = [ "Caucasian", "Asian", "African"]
-  $types = [ "straight", "wavy", "curly", "coily" ]
-  $colours = [ "blond", "red", "brown", "white", "gray"]
 
   acts_as_taggable_on :straight
   acts_as_taggable_on :wavy
