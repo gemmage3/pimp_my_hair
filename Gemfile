@@ -4,7 +4,7 @@ ruby '2.6.5'
 gem 'bootsnap', require: false
 gem 'jbuilder', '~> 2.0'
 gem 'pg', '~> 0.21'
-gem 'puma'
+gem 'puma', ">= 4.3.3"
 gem 'rails', '5.2.4.1'
 gem 'redis'
 
@@ -36,4 +36,13 @@ gem 'pundit'
 
 # cloudinary - images resource
 gem 'cloudinary', '~> 1.12.0'
+
+# search gem
+gem 'pg_search'
+
+# creating tags to hairs
+gem 'acts-as-taggable-on', '~> 6.0'
+
+# To select country in user registration
+gem 'country_select'
 

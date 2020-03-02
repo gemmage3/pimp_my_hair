@@ -42,6 +42,8 @@ GEM
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    acts-as-taggable-on (6.5.0)
+      activerecord (>= 5.0, < 6.1)
     arel (9.0.0)
     autoprefixer-rails (9.7.4)
       execjs
@@ -57,6 +59,13 @@ GEM
       rest-client
     coderay (1.1.2)
     concurrent-ruby (1.1.6)
+    countries (3.0.1)
+      i18n_data (~> 0.10.0)
+      sixarm_ruby_unaccent (~> 1.1)
+      unicode_utils (~> 1.4)
+    country_select (4.0.0)
+      countries (~> 3.0)
+      sort_alphabetical (~> 1.0)
     crass (1.0.6)
     devise (4.7.1)
       bcrypt (~> 3.0)
@@ -82,6 +91,7 @@ GEM
       domain_name (~> 0.5)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
+    i18n_data (0.10.0)
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
     listen (3.0.8)
@@ -109,6 +119,9 @@ GEM
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pg (0.21.0)
+    pg_search (2.3.2)
+      activerecord (>= 5.2)
+      activesupport (>= 5.2)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -117,7 +130,7 @@ GEM
       pry (~> 0.10)
     pry-rails (0.3.9)
       pry (>= 0.10.4)
-    puma (4.3.1)
+    puma (4.3.3)
       nio4r (~> 2.0)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
@@ -174,6 +187,9 @@ GEM
     simple_form (5.0.2)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
+    sixarm_ruby_unaccent (1.2.0)
+    sort_alphabetical (1.1.0)
+      unicode_utils (>= 1.2.2)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -195,6 +211,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.6)
+    unicode_utils (1.4.0)
     warden (1.2.8)
       rack (>= 2.0.6)
     web-console (3.7.0)
@@ -214,18 +231,21 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on (~> 6.0)
   autoprefixer-rails
   bootsnap
   cloudinary (~> 1.12.0)
+  country_select
   devise
   dotenv-rails
   font-awesome-sass (~> 5.6.1)
   jbuilder (~> 2.0)
   listen (~> 3.0.5)
   pg (~> 0.21)
+  pg_search
   pry-byebug
   pry-rails
-  puma
+  puma (>= 4.3.3)
   pundit
   rails (= 5.2.4.1)
   redis
