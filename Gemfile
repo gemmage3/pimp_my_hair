@@ -37,3 +37,6 @@ gem 'pundit'
 # cloudinary - images resource
 gem 'cloudinary', '~> 1.12.0'
 
+# To select country in user registration
+gem 'country_select'
+
