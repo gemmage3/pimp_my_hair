@@ -1,0 +1,5 @@
+function replaceHairs (innerHTML) {
+  const hairs = document.getElementById('hairs');
+  hairs.innerHTML = innerHTML;
+}
+replaceHairs("<%= j render 'hair', hairs: @hairs %>");
