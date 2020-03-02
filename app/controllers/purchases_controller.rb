@@ -9,9 +9,11 @@ class PurchasesController < ApplicationController
     @purchase.hair = @hair
     authorize @purchase
     if @purchase.save
+      @hair.sold = true
+      @hair.save
       redirect_to purchase_path(@purchase.id)
     else
-      edirect_to purchase_path(@purchase.id)
+      render "hairs/show"
     end
   end
 

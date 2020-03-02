@@ -1,5 +1,5 @@
 <div class="container m-6">
-  <h1>Overview</h1>
+  <h1 class="ml-5 mt-5">Overview</h1>
   <div class="d-flex justify-content-around">
     <div class="purchase-item">
       <div class="card">
@@ -11,15 +11,20 @@
       </div>
     </div>
     <div class="purchase-item">
-      <div>
-        <h3>This item is offered by <%= @hair.user.name %> </h3>
-
-        <h3>Would you like to leave a comment?</h3>
-        <%= simple_form_for @purchase, :url => hair_purchases_path(@hair.id) do |f| %>
-          <%= f.error_notification %>
-          <%= f.input :comment %>
-          <%= f.submit %>
-        <% end %>
+      <div class="container m-4">
+        <p class="row" >This item is offered by <%= @hair.user.name %> </p>
+        <p class="row" >It will be sent to you from <%= @hair.user.city %> <%= @hair.user.country%> </p>
+        <br>
+        <br>
+        <br>
+        <p class="row" >Place your order now!</p>
+        <div class="row" >
+          <%= simple_form_for @purchase, :url => hair_purchases_path(@hair.id) do |f| %>
+            <%= f.error_notification %>
+            <%= f.input :comment %>
+            <%= f.button :submit, "Purchase", id: "purchase-btn", class: 'btn btn-warning'%>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
