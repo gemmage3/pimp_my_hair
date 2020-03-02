@@ -7,9 +7,9 @@ class Hair < ApplicationRecord
   validates :price, presence: true
   validates :hair_type, presence: true
   validates :colour, presence: true
-  ETHNICITY = [ "Caucasian", "Asian", "African"]
-  TYPES = [ "straight", "wavy", "curly", "coily" ]
-  COLOURS = [ "blond", "red", "brown", "white", "gray"]
+  ETHNICITY = [ "European", "Russian", "Indian Temple", "South Asian Other", "Peruvian", "Brazilian", "Malaysian", "Burmese", "Mongolian", "Chinese", "Oriental-other"]
+  TYPES = ["Silky Straight", "Yaki straight", "Wavy", "Curly"]
+  COLOURS = [ "Blonde", "Light Brown", "Medium Brown", "Dark Brown", "Black", "White"]
 
   include PgSearch::Model
 
@@ -18,9 +18,9 @@ class Hair < ApplicationRecord
     using: {
       tsearch: {any_word: true}
     }
-  $ethnicity = [ "Caucasian", "Asian", "African"]
-  $types = [ "straight", "wavy", "curly", "coily" ]
-  $colours = [ "blond", "red", "brown", "white", "gray"]
+  $ethnicity = [ "European", "Russian", "Indian Temple", "South Asian Other", "Peruvian", "Brazilian", "Malaysian", "Burmese", "Mongolian", "Chinese", "Oriental-other" ]
+  $types = [ "Silky Straight", "Yaki straight", "Wavy", "Curly"]
+  $colours = [ "Blonde", "Light Brown", "Medium Brown", "Dark Brown", "Black", "White"]
 
   acts_as_taggable_on :straight
   acts_as_taggable_on :wavy
