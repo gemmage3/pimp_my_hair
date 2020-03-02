@@ -1,17 +1,26 @@
 <%= render 'shared/banner' %>
 
-<div class="cards">
-  <% @unsold_hairs.each do |hair|%>
-    <div class="card">
-        <%= cl_image_tag hair.photos.first.key %>
-      <div class="card-infos">
-        <div>
-          <p> <%= hair.length_cm %> cm of <%= hair.hair_type %> <%= hair.colour %> hair </p>
-          <p> <%= hair.weight_grams %> grams for <%= hair.price %> GBP </p>
-        </div>
-        <%= link_to 'Purchase Now!', hair_path(hair.id), class: 'btn btn-warning' %>
-      </div>
+<%= simple_form_for :search, url: root_path, method: "GET", remote: true, html: { class: 'form-inline' } do |f| %>
+  <div class="col-12">
+    <%= f.input :your_search, input_html: {value: ""} %>
+    <%= f.input :hair_type, label: "Hair Type", collection: $types, as: :check_boxes %>
+    <%= f.input :colour, label: "Colour", collection: $colours, as: :check_boxes %>
+    <%= f.input :ethnicity, label: "Ethnicity", collection: $ethnicity, as: :check_boxes %>
+    <%= f.submit "Search", class: "btn btn-primary" %>
+    <%= link_to "Reset", root_path  %>
+  </div>
+<% end %>
+    <div id="hairs">
+      <%= render 'hair', hairs: @hairs %>
     </div>
-  <% end %>
-</div>
 
+<script type="text/javascript">
+  var checkBoxes = document.querySelectorAll(".form-check-input");
+  var form = document.querySelector('form');
+
+  for (const check of checkBoxes) {
+  check.addEventListener( 'change', function() {
+    Rails.fire(form, 'submit');
+  });
+  }
+</script>
