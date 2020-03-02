@@ -6,10 +6,23 @@ class HairsController < ApplicationController
     @purchases = policy_scope(Purchase)
     @hairs = policy_scope(Hair)
     @unsold_hairs = []
+
     @hairs.each do |hair|
       @unsold_hairs << hair if !hair.sold
     end
     @unsold_hairs
+
+    if params["search"]
+      @filter = Hair.where(params["search"]["weight_grams"].concat(params["search"]["length_cm"]).concat(params["search"]["price"]).concat(params["search"]["hair_type"]).concat(params["search"]["colour"]).flatten.reject(&:blank?))
+      @hairs = Hair.all.global_search("#{@filter}")
+      @hairs = @filter.empty? ? Hair.all : Hair.all.tagged_with(@filter, any: true)
+    else
+      @hairs = Hair.all
+    end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new

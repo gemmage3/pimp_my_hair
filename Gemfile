@@ -37,3 +37,8 @@ gem 'pundit'
 # cloudinary - images resource
 gem 'cloudinary', '~> 1.12.0'
 
+# search gem
+gem 'pg_search'
+
+# creating tags to hairs
+gem 'acts-as-taggable-on', '~> 6.0'
