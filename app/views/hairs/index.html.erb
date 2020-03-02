@@ -1,26 +1,16 @@
 <%= render 'shared/banner' %>
-
-<%= simple_form_for :search, url: root_path, method: "GET", remote: true, html: { class: 'form-inline' } do |f| %>
-  <div class="col-12">
-    <%= f.input :your_search, input_html: {value: ""} %>
-    <%= f.input :hair_type, label: "Hair Type", collection: $types, as: :check_boxes %>
-    <%= f.input :colour, label: "Colour", collection: $colours, as: :check_boxes %>
-    <%= f.input :ethnicity, label: "Ethnicity", collection: $ethnicity, as: :check_boxes %>
-    <%= f.submit "Search", class: "btn btn-primary" %>
-    <%= link_to "Reset", root_path  %>
+  <%= simple_form_for :search, url: hairs_path, method: "GET" do |f| %>
+<div class="w-50 m-auto p-3 mb-2 bg-light text-dark align-items-center">
+  <div class=" d-flex justify-content-between align-items-center">
+    <p> Search your dream hair:</p>
+        <%= f.input :hair_type, required: false, collection: Hair::TYPES %>
+        <%= f.input :colour, required: false, collection: Hair::COLOURS %>
+        <%= f.input :ethnicity, required: false, collection: Hair::ETHNICITY %>
+        <%= f.submit "Search", class: "btn btn-warning" %>
+        <%= link_to 'Reset', hairs_path %>
+    <% end %>
   </div>
-<% end %>
+</div>
     <div id="hairs">
-      <%= render 'hair', hairs: @hairs %>
+      <%= render 'hair', hairs: @unsold_hairs %>
     </div>
-
-<script type="text/javascript">
-  var checkBoxes = document.querySelectorAll(".form-check-input");
-  var form = document.querySelector('form');
-
-  for (const check of checkBoxes) {
-  check.addEventListener( 'change', function() {
-    Rails.fire(form, 'submit');
-  });
-  }
-</script>

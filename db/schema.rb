@@ -50,6 +50,35 @@ ActiveRecord::Schema.define(version: 2020_03_02_154838) do
     t.index ["user_id"], name: "index_hairs_on_user_id"
   end
 
+  create_table "pay_charges", force: :cascade do |t|
+    t.bigint "owner_id"
+    t.string "processor", null: false
+    t.string "processor_id", null: false
+    t.integer "amount", null: false
+    t.integer "amount_refunded"
+    t.string "card_type"
+    t.string "card_last4"
+    t.string "card_exp_month"
+    t.string "card_exp_year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_pay_charges_on_owner_id"
+  end
+
+  create_table "pay_subscriptions", id: :serial, force: :cascade do |t|
+    t.integer "owner_id"
+    t.string "name", null: false
+    t.string "processor", null: false
+    t.string "processor_id", null: false
+    t.string "processor_plan", null: false
+    t.integer "quantity", default: 1, null: false
+    t.datetime "trial_ends_at"
+    t.datetime "ends_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string "status"
+  end
+
   create_table "purchases", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "hair_id"
@@ -98,6 +127,14 @@ ActiveRecord::Schema.define(version: 2020_03_02_154838) do
     t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "processor"
+    t.string "processor_id"
+    t.datetime "trial_ends_at"
+    t.string "card_type"
+    t.string "card_last4"
+    t.string "card_exp_month"
+    t.string "card_exp_year"
+    t.text "extra_billing_info"
     t.string "zip_code"
     t.string "city"
     t.string "country"

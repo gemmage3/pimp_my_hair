@@ -18,9 +18,6 @@ class Hair < ApplicationRecord
     using: {
       tsearch: {any_word: true}
     }
-  $ethnicity = [ "European", "Russian", "Indian Temple", "South Asian Other", "Peruvian", "Brazilian", "Malaysian", "Burmese", "Mongolian", "Chinese", "Oriental-other" ]
-  $types = [ "Silky Straight", "Yaki straight", "Wavy", "Curly"]
-  $colours = [ "Blonde", "Light Brown", "Medium Brown", "Dark Brown", "Black", "White"]
 
   acts_as_taggable_on :straight
   acts_as_taggable_on :wavy

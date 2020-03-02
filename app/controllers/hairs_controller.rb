@@ -12,16 +12,12 @@ class HairsController < ApplicationController
     end
     @unsold_hairs
 
-    if params["search"]
-      @filter = Hair.where(params["search"]["weight_grams"].concat(params["search"]["length_cm"]).concat(params["search"]["price"]).concat(params["search"]["hair_type"]).concat(params["search"]["colour"]).flatten.reject(&:blank?))
-      @hairs = Hair.all.global_search("#{@filter}")
-      @hairs = @filter.empty? ? Hair.all : Hair.all.tagged_with(@filter, any: true)
-    else
-      @hairs = Hair.all
-    end
-    respond_to do |format|
-      format.html
-      format.js
+    if params[:search]
+      filtering_hair
+      execute_filter(filtering_hair)
+      if none_filter
+        @unsold_hairs = Hair.all
+      end
     end
   end
 
@@ -80,6 +76,36 @@ class HairsController < ApplicationController
   def set_hair
     @hair = Hair.find(params[:id])
     authorize @hair
+  end
+
+  def filtering_hair
+    @hair_type_filter = params[:search][:hair_type]
+    @hair_colour_filter = params[:search][:colour]
+    @hair_ethnicity_filter = params[:search][:ethnicity]
+  end
+
+  def execute_filter(filter_option)
+      if !@hair_type_filter.empty?
+        @unsold_hairs = @unsold_hairs.select do |hair|
+          hair.hair_type == @hair_type_filter
+        end
+      end
+
+      if !@hair_colour_filter.empty?
+        @unsold_hairs = @unsold_hairs.select do |hair|
+          hair.colour == @hair_colour_filter
+        end
+      end
+
+      if !@hair_ethnicity_filter.empty?
+        @unsold_hairs = @unsold_hairs.select do |hair|
+          hair.ethnicity == @hair_ethnicity_filter
+        end
+      end
+  end
+
+  def none_filter
+    !@hair_type_filter && !@hair_colour_filter && !@hair_ethnicity_filter
   end
 
 end
