@@ -4,7 +4,7 @@
     <% if !@hairs.exists? %>
       <div class="m-6">
         <h3 class="text-left">You don't have hairs for sale</h3>
-        <%= link_to "Sell a new hair", new_hair_path, class: "btn btn-warning" %>
+        <%= link_to "Sell a new hair", new_hair_path, class: "btn btn-warning m-2" %>
       </div>
     <% else %>
       <h3 class="text-left">Items for sale</h3>
@@ -49,12 +49,12 @@
             <%= link_to edit_hair_path(hair) do %>
               <i class="fas fa-edit"></i>
             <% end %>
-            <%= link_to '#', method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= link_to hair_path(hair), method: :delete, data: { confirm: 'Are you sure?' } do %>
               <i class="fas fa-trash-alt"></i>
             <% end %>
           </div>
           </div>
         </div>
     <% end %>
-      <% end %>
+    <% end %>
   </div>
