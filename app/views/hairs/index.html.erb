@@ -1,7 +1,8 @@
 <%= render 'shared/banner' %>
+  <div class="container m-8">
+
   <%= simple_form_for :search, url: hairs_path, method: "GET" do |f| %>
-<div class="w-50 m-auto p-3 mb-2 bg-light text-dark align-items-center">
-  <div class=" d-flex justify-content-between align-items-center">
+  <div class="bottom d-flex justify-content-between align-items-center">
     <p> Search your dream hair:</p>
         <%= f.input :hair_type, required: false, collection: Hair::TYPES %>
         <%= f.input :colour, required: false, collection: Hair::COLOURS %>
@@ -10,7 +11,7 @@
         <%= link_to 'Reset', hairs_path %>
     <% end %>
   </div>
-</div>
     <div id="hairs">
       <%= render 'hair', hairs: @unsold_hairs %>
+    </div>
     </div>

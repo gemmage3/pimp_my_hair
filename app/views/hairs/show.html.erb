@@ -3,9 +3,31 @@
   <div class="d-flex justify-content-around">
     <div class="purchase-item">
       <div class="card">
-        <%= cl_image_tag @hair.photos.first.key %>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                  <%= cl_image_tag @hair.photos.first.key, :class => "d-block w-100" %>
+              </div>
+              <% @hair.photos.each do |photo| %>
+                <% if photo != @hair.photos.first %>
+                  <div class="carousel-item">
+                    <%= cl_image_tag photo.key, :class => "d-block w-100" %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
         <div class="card-infos">
-            <p> <%= @hair.length_cm %> cm of <%= @hair.hair_type %> <%= @hair.colour %> </p>
+            <p> <%= @hair.length_cm %> cm of <%= @hair.hair_type %> <%= @hair.colour %> hair of <%= @hair.ethnicity %> ethnicity </p>
             <p> <%= @hair.weight_grams %> grams for <%= @hair.price %> GBP </p>
         </div>
       </div>

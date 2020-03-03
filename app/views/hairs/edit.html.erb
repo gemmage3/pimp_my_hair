@@ -10,7 +10,9 @@
     <%= f.input :colour %>
     <%= f.input :ethnicity, collection: Hair::ETHNICITY, prompt: :translate %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-    <%= f.submit %>
+    <%= f.submit "Edit", class: "btn btn-warning btn-block" %>
+    <br>
+    <br>
   <% end %>
 
 </div>
