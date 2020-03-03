@@ -9,9 +9,9 @@ class Hair < ApplicationRecord
   validates :colour, presence: true
   validate :photos_presence_format
 
-  ETHNICITY = [ "European", "Russian", "Indian Temple", "South Asian Other", "Peruvian", "Brazilian", "Malaysian", "Burmese", "Mongolian", "Chinese", "Oriental-other"]
-  TYPES = ["Silky Straight", "Yaki straight", "Wavy", "Curly", "Coily"]
-  COLOURS = [ "Blonde", "Red", "Light Brown", "Medium Brown", "Dark Brown", "Black", "White"]
+  ETHNICITY = ["African" "European", "Russian", "Indian temple", "South Asian", "Peruvian", "Brazilian", "Malaysian", "Burmese", "Mongolian", "Chinese", "Oriental or other"]
+  TYPES = ["silky straight", "saki straight", "wavy", "curly", "coily"]
+  COLOURS = [ "blonde", "red", "light brown", "medium brown", "dark brown", "black", "white"]
 
   include PgSearch::Model
 
