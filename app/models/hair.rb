@@ -18,10 +18,4 @@ class Hair < ApplicationRecord
     using: {
       tsearch: {any_word: true}
     }
-
-  acts_as_taggable_on :straight
-  acts_as_taggable_on :wavy
-  acts_as_taggable_on :curly
-  acts_as_taggable_on :coily
-
 end
