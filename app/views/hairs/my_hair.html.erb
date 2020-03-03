@@ -8,7 +8,29 @@
           <%= cl_image_tag hair.photos.first.key, :style => "filter: grayscale(100%);" %>
           <div class="sold-tag"> SOLD </div>
         <% else %>
-          <%= cl_image_tag hair.photos.first.key %>
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <%= cl_image_tag hair.photos.first.key, :class => "d-block w-100" %>
+                  </div>
+               <% hair.photos.each do |photo| %>
+                  <% if photo != hair.photos.first %>
+                    <div class="carousel-item">
+                      <%= cl_image_tag photo.key, :class => "d-block w-100" %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
         <% end %>
         <div class="card-infos">
           <div>
@@ -16,9 +38,13 @@
             <p> <%= hair.weight_grams %> grams for <%= hair.price %> GBP </p>
           </div>
           <div class="d-flex align-items-stretch flex-column">
-          <%= link_to 'Edit', edit_hair_path(hair), class: 'btn btn-warning mb-2' %>
-          <%= link_to 'Delete', "#", class: 'btn btn-warning' %>
-          </div>
+          <%= link_to edit_hair_path(hair) do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+          <%= link_to '#', method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        </div>
         </div>
       </div>
     <% end %>
