@@ -9,7 +9,7 @@ class Hair < ApplicationRecord
   validates :colour, presence: true
   validate :photos_presence_format
 
-  ETHNICITY = ["African" "European", "Russian", "Indian temple", "South Asian", "Peruvian", "Brazilian", "Malaysian", "Burmese", "Mongolian", "Chinese", "Oriental or other"]
+  ETHNICITY = ["African", "European", "Russian", "Indian temple", "South Asian", "Peruvian", "Brazilian", "Malaysian", "Burmese", "Mongolian", "Chinese", "Oriental or other"]
   TYPES = ["silky straight", "saki straight", "wavy", "curly", "coily"]
   COLOURS = [ "blonde", "red", "light brown", "medium brown", "dark brown", "black", "white"]
 
