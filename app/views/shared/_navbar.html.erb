@@ -9,13 +9,16 @@
     <ul class="navbar-nav mr-auto">
         <% if user_signed_in? %>
           <li class="nav-item active h5 mr-3">
-            <%= link_to "Sell a new hair", new_hair_path, class: "nav-link" %>
+            <%= link_to "Browse", hairs_path, class: "home_page nav-link" %>
           </li>
           <li class="nav-item active h5 mr-3">
-            <%= link_to "My Hairs", my_hair_hairs_path, class: "nav-link" %>
+            <%= link_to "Sell", new_hair_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active h5 mr-3">
+            <%= link_to "My Hair", my_hair_hairs_path, class: "nav-link" %>
           </li>
           <li class="nav-item h5 mr-3">
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "log_out nav-link" %>
           </li>
           <li class="nav-item mr-3">
               <%= cl_image_tag current_user.avatar.key, class: "avatar" %>
