@@ -31,7 +31,7 @@ class HairsController < ApplicationController
     @hair.user = current_user
     authorize @hair
     if @hair.save
-      redirect_to hairs_path
+      redirect_to my_hair_hairs_path
     else
       render :new
     end

@@ -1,5 +1,13 @@
 <div class="container m-6">
 <h1 class="text-center">My Hair Collection</h1>
+
+  <% if !@hairs.exists? %>
+    <div class="m-6">
+      <h3 class="text-left">You don't have hairs for sale</h3>
+      <%= link_to "Sell a new hair", new_hair_path, class: "btn btn-warning" %>
+    </div>
+  <% else %>
+    <h3 class="text-left">Items for sale</h3>
   <div class="card-columns">
     <% @hairs.each do |hair|%>
       <div class="card">
@@ -47,6 +55,6 @@
         </div>
         </div>
       </div>
-    <% end %>
-  </div>
+  <% end %>
 </div>
+<% end %>
