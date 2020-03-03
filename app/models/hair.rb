@@ -7,9 +7,11 @@ class Hair < ApplicationRecord
   validates :price, presence: true
   validates :hair_type, presence: true
   validates :colour, presence: true
+  validate :photos_presence_format
+
   ETHNICITY = [ "European", "Russian", "Indian Temple", "South Asian Other", "Peruvian", "Brazilian", "Malaysian", "Burmese", "Mongolian", "Chinese", "Oriental-other"]
-  TYPES = ["Silky Straight", "Yaki straight", "Wavy", "Curly"]
-  COLOURS = [ "Blonde", "Light Brown", "Medium Brown", "Dark Brown", "Black", "White"]
+  TYPES = ["Silky Straight", "Yaki straight", "Wavy", "Curly", "Coily"]
+  COLOURS = [ "Blonde", "Red", "Light Brown", "Medium Brown", "Dark Brown", "Black", "White"]
 
   include PgSearch::Model
 
@@ -18,4 +20,15 @@ class Hair < ApplicationRecord
     using: {
       tsearch: {any_word: true}
     }
+
+  private
+
+  def photos_presence_format
+    if photos.attached? && !photos.content_type.in?(%w(image/jpeg image/png))
+      errors.add(:photos, "must be a JPEG or PNG.")
+    elsif photos.attached? == false
+      errors.add(:photos, "required.")
+    end
+  end
+
 end
