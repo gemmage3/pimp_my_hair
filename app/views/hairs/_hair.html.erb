@@ -1,5 +1,5 @@
 <div id="hairs">
-  <div class="cards">
+  <div  class="card-columns">
     <% hairs.each do |hair|%>
       <div class="card" id="hair-id-<%= hair.id %>">
           <%= cl_image_tag hair.photos.first.key %>

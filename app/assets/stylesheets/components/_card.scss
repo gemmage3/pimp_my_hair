@@ -4,32 +4,42 @@
 }
 
 .card {
+  position: relative;
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 40px;
-}
-
-.card > img {
+  img {
   height: 100%;
   width: 100%;
   object-fit: cover;
-}
-
-.card p {
+  };
+  p {
   font-size: 12px;
   opacity: .7;
   margin: 0;
   font-weight: bold;
-}
-
-
-.card .card-infos {
+  };
+  .card-infos {
   padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+  };
+  .sold-tag{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 12px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 15px;
+  padding-left: 15px;
+  color: white;
+  background: red;
+  border-radius: 5px;
+  };
 }
 
 // Smallest device

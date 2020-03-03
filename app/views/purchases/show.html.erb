@@ -1,8 +1,8 @@
-<div class="container m-6">
-  <div class="card">
-    <h2> Dear <%= @purchase.user.name %> </h2>
-    <h1> Thank you for your purchase </h1>
-    <i class="far fa-check-circle"></i>
-    <p> <%= @purchase.hair.user.name %> will get in touch with you to arrange the payment and delivery of their hair.</p>
+  <div class="container m-6">
+    <div class="card p-4">
+      <h2 class="text-center"> Dear <%= @purchase.user.name %> </h2>
+      <h1 class="text-center"> Thank you for your purchase </h1>
+      <div class="text-center"><i class="far fa-check-circle"></i></div>
+      <p class="text-center"> <%= @purchase.hair.user.name %> will get in touch with you to arrange the payment and delivery of their hair.</p>
+    </div>
   </div>
-</div>
