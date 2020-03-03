@@ -24,9 +24,7 @@ class Hair < ApplicationRecord
   private
 
   def photos_presence_format
-    if photos.attached? && !photos.content_type.in?(%w(image/jpeg image/png))
-      errors.add(:photos, "must be a JPEG or PNG.")
-    elsif photos.attached? == false
+    if photos.attached? == false
       errors.add(:photos, "required.")
     end
   end
