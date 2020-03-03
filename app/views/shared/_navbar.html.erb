@@ -21,7 +21,9 @@
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "log_out nav-link" %>
           </li>
           <li class="nav-item mr-3">
+            <% if current_user.avatar.attached? %>
               <%= cl_image_tag current_user.avatar.key, class: "avatar" %>
+              <% end %>
           </li>
         <% else %>
           <li class="nav-item active mr-3">
